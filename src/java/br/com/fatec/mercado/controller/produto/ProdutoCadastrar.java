@@ -42,6 +42,8 @@ public class ProdutoCadastrar extends HttpServlet {
         int idproduto = Integer.parseInt(request.getParameter("idproduto"));
         int idMarca = Integer.parseInt(request.getParameter("idmarca"));
         String nomeProduto = request.getParameter("nomeproduto");
+        float preco = Float.parseFloat(request.getParameter("preco"));
+        String descricao = request.getParameter("descricao");
         String mensagem = null;
         
         try{
@@ -52,10 +54,11 @@ public class ProdutoCadastrar extends HttpServlet {
             oProduto.setIdProduto(idproduto);
             oProduto.setNomeProduto(nomeProduto);
             oProduto.setMarca(oMarca);
+            oProduto.setDescricao(descricao);
                
             GenericDAO dao = new ProdutoDAO();
             if (dao.cadastrar(oProduto)){
-                mensagem = "Produto cadastrada com sucesso!";                
+                mensagem = "Produto cadastrado com sucesso!";                
             } else {
                 mensagem = "Problemas ao cadastrar Produto. "
                     + "Verifique os dados informados "
