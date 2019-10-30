@@ -14,23 +14,19 @@
                 <th>ID</th>                    
                 <th>Nome</th>
                 <th>Marca</th>
+                <th>Preco</th>
                 <th colspan="2">Editar</th>
             </tr>
         </thead>                                 
         <tbody id="myTable">
             <c:forEach var="produto" items="${produtos}">
-
                 <tr>
                     <td align="center">${produto.idProduto}</td>                    
                     <td align="center">${produto.nomeProduto}</td>
                     <td align="center">${produto.marca.nomeMarca}</td>
-                    <td align="center"><a href=
-                                          "${pageContext.request.contextPath}/ProdutoExcluir?idProduto=${produto.idProduto}">
-                            Excluir</a></td>
-
-                    <td align="center"><a href=
-                                          "${pageContext.request.contextPath}/ProdutoCarregar?idProduto=${produto.idProduto}">
-                            Alterar</a></td>
+                    <td align="center">${produto.preco}</td>
+                    <td align="center"><a href="${pageContext.request.contextPath}/ProdutoExcluir?idProduto=${produto.idProduto}">Excluir</a></td>
+                    <td align="center"><a href="${pageContext.request.contextPath}/ProdutoCarregar?idProduto=${produto.idProduto}">Alterar</a></td>
                 </tr>                
             </c:forEach>
         </tbody>
