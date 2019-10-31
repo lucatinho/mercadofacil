@@ -42,7 +42,7 @@ public class ProdutoCadastrar extends HttpServlet {
         int idproduto = Integer.parseInt(request.getParameter("idproduto"));
         int idMarca = Integer.parseInt(request.getParameter("idmarca"));
         String nomeProduto = request.getParameter("nomeproduto");
-        float preco = Float.parseFloat(request.getParameter("preco"));
+        double preco = Double.parseDouble(request.getParameter("preco"));
         String descricao = request.getParameter("descricao");
         String mensagem = null;
         
@@ -55,6 +55,7 @@ public class ProdutoCadastrar extends HttpServlet {
             oProduto.setNomeProduto(nomeProduto);
             oProduto.setMarca(oMarca);
             oProduto.setDescricao(descricao);
+            oProduto.setPreco(preco);
                
             GenericDAO dao = new ProdutoDAO();
             if (dao.cadastrar(oProduto)){

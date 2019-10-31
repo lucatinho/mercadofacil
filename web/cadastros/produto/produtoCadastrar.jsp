@@ -3,8 +3,7 @@
 <jsp:include page="/header.jsp"/>
 
 
-<form name="cadastrarproduto" action="ProdutoCadastrar" 
-      method="POST">
+<form name="cadastrarproduto" action="ProdutoCadastrar" method="POST">
 
     <table align="center" border="0">
         <thead>
@@ -44,10 +43,9 @@
                 </td>
             </tr>
 
-               <tr>
+            <tr>
                 <td>Preço: </td>
-                <td><input type="text" name="preco" 
-                           id="preco" value="${produto.preco}" maxlength="50" /></td>
+                <td><input type="text" name="preco" id="preco" value="${produto.preco}" maxlength="50" /></td>
             </tr>
             
             <tr>
