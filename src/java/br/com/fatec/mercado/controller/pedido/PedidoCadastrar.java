@@ -7,9 +7,9 @@ package br.com.fatec.mercado.controller.pedido;
 
 
 import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.dao.MarcaDAO;
+import br.com.fatec.mercado_lib.dao.ProdutoDAO;
 import br.com.fatec.mercado_lib.dao.PedidoDAO;
-import br.com.fatec.mercado_lib.model.Marca;
+import br.com.fatec.mercado_lib.model.Produto;
 import br.com.fatec.mercado_lib.model.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,22 +40,17 @@ public class PedidoCadastrar extends HttpServlet {
         
         response.setContentType("text/html;charset=iso-8859-1");
         int idpedido = Integer.parseInt(request.getParameter("idpedido"));
-        int idMarca = Integer.parseInt(request.getParameter("idmarca"));
-        String nomePedido = request.getParameter("nomepedido");
-        double preco = Double.parseDouble(request.getParameter("preco"));
-        String descricao = request.getParameter("descricao");
+        int idProduto = Integer.parseInt(request.getParameter("idproduto"));
+        int idCliente = Integer.parseInt(request.getParameter("idcliente"));
         String mensagem = null;
         
         try{
-            GenericDAO oMarcaDAO = new MarcaDAO();
-            Marca oMarca = (Marca) oMarcaDAO.carregar(idMarca);
+            GenericDAO oProdutoDAO = new ProdutoDAO();
+            Produto oProduto = (Produto) oProdutoDAO.carregar(idProduto);
             
             Pedido oPedido = new Pedido();
             oPedido.setIdPedido(idpedido);
-            oPedido.setNomePedido(nomePedido);
-            oPedido.setMarca(oMarca);
-            oPedido.setDescricao(descricao);
-            oPedido.setPreco(preco);
+
                
             GenericDAO dao = new PedidoDAO();
             if (dao.cadastrar(oPedido)){

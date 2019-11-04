@@ -10,6 +10,7 @@
         <a href="${pageContext.request.contextPath}/FormaPagamentoListar" class="list-group-item list-group-item-action">Forma de Pagamento</a>
         <a href="${pageContext.request.contextPath}/MarcaListar" class="list-group-item list-group-item-action">Marca</a>
         <a href="${pageContext.request.contextPath}/StatusPedidoListar" class="list-group-item list-group-item-action">Status do Pedido</a>
+        <a href="${pageContext.request.contextPath}/PedidoListar" class="list-group-item list-group-item-action">Pedido</a>
         <a href="${pageContext.request.contextPath}/ProdutoListar" class="list-group-item list-group-item-action">Produto</a>
         
     </div>

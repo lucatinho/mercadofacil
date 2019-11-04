@@ -7,7 +7,7 @@ package br.com.fatec.mercado.controller.pedido;
 
 
 import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.dao.MarcaDAO;
+import br.com.fatec.mercado_lib.dao.ProdutoDAO;
 import br.com.fatec.mercado_lib.model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,9 +42,9 @@ public class PedidoNovo extends HttpServlet {
         try{
             //cria pedido vazia
             Produto oProduto = new Produto();
-            //Gera lista de marca
-            GenericDAO oMarcaDAO = new MarcaDAO();
-            request.setAttribute("marcas", oMarcaDAO.listar());
+            //Gera lista de produto
+            GenericDAO oProdutoDAO = new ProdutoDAO();
+            request.setAttribute("produtos", oProdutoDAO.listar());
             //cria variavel no servidor para armazenar objeto de lombada
             request.setAttribute("pedido", oProduto);
             
