@@ -7,6 +7,7 @@
         <a href="${pageContext.request.contextPath}/CategoriaListar" class="list-group-item list-group-item-action">Categoria do Produto</a>
         <a href="${pageContext.request.contextPath}/CidadeListar" class="list-group-item list-group-item-action">Cidade</a>
         <a href="${pageContext.request.contextPath}/EstadoListar" class="list-group-item list-group-item-action">Estado</a>
+        <a href="${pageContext.request.contextPath}/EnderecoListar" class="list-group-item list-group-item-action">Endereço</a>
         <a href="${pageContext.request.contextPath}/FormaPagamentoListar" class="list-group-item list-group-item-action">Forma de Pagamento</a>
         <a href="${pageContext.request.contextPath}/MarcaListar" class="list-group-item list-group-item-action">Marca</a>
         <a href="${pageContext.request.contextPath}/StatusPedidoListar" class="list-group-item list-group-item-action">Status do Pedido</a>
