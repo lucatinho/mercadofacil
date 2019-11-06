@@ -1,21 +1,15 @@
-<%-- 
-    Document   : enderecoCadastrar
-    Created on : 03/09/2019, 19:50:23
-    Author     : jeffersonpasserini
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <jsp:include page="/header.jsp"/>
 
 
-<form name="cadastrarendereco" action="EnderecoCadastrar" 
-      method="POST">
+<form name="cadastrarendereco" action="EnderecoCadastrar" method="POST">
 
     <table align="center" border="0">
         <thead>
             <tr>
                 <th colspan="2" align="center">
-                    Cadastro de Endereco</th>
+                    Cadastro de endereço</th>
             </tr>
             <tr>
                 <th colspan="2" align="center">${mensagem}</th>
@@ -28,17 +22,19 @@
                            id="idendereco" value="${endereco.idEndereco}"
                            readonly="readonly" /></td>
             </tr>
-
             <tr>
                 <td>CEP: </td>
-                <td><input type="text" name="CEP" id="preco" value="${produto.CEP}" maxlength="50" /></td>
+                <td><input type="text" name="CEP" id="CEP" value="${endereco.CEP}" maxlength="50" /></td>
             </tr>
-
             <tr>
                 <td>Nome da rua: </td>
-                <td><input type="text" name="nomeendereco" id="nomeendereco" 
+                <td><input type="text" name="rua" id="rua" 
                            value="${endereco.rua}" size="50" 
                            maxlength="50" /></td>
+            </tr>
+            <tr>
+                <td>Numero: </td>
+                <td><input type="text" name="numeroCasa" id="numeroCasa" value="${endereco.numeroCasa}" maxlength="50" /></td>
             </tr>
             <tr>
                 <td>Cidade: </td>
@@ -64,12 +60,7 @@
                            value="Limpar" />
                 </td>
             </tr>
-            <tr>                        
-                <td align="center" colspan="2"><h5><a href="/index.jsp">
-                            Voltar à Página Inicial</a></h5></td>
-            </tr>
         </tbody>
     </table>
 </form>        
-
 <%@ include file="/footer.jsp" %>
