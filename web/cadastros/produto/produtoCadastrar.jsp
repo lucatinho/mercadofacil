@@ -22,23 +22,27 @@
                            id="idproduto" value="${produto.idProduto}"
                            readonly="readonly" /></td>
             </tr>
+            
             <tr>
                 <td>Nome: </td>
                 <td><input type="text" name="nomeproduto" id="nomeproduto" 
                            value="${produto.nomeProduto}" size="50" 
                            maxlength="50" /></td>
             </tr>
+            
             <tr>
                 <td>Marca: </td>
                 <td>
                     <select name="idmarca" id="idmarca">
                         <option value="">Selecione</option>
+                        
                         <c:forEach var="marca" items="${marcas}">
                             <option value="${marca.idMarca}" 
                                     ${produto.marca.idMarca == marca.idMarca ? "selected" : ""}>
                                 ${marca.nomeMarca}
                             </option>
                         </c:forEach>
+                            
                     </select>
                 </td>
             </tr>

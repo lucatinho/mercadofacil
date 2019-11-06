@@ -18,6 +18,7 @@
                 <tr>
                     <th align="center">ID</th>                    
                     <th align="center">Nome da Rua</th>
+                    <th align="center">Numero</th>
                     <th align="center">Cidade</th>
                     <th align="center" colspan="2">Editar</th>
                 </tr>
@@ -27,6 +28,7 @@
                     <tr>
                         <td align="center">${endereco.idEndereco}</td>                    
                         <td align="center">${endereco.rua}</td>
+                        <td align="center">${endereco.numeroCasa}</td>
                         <td align="center">${endereco.cidade.nomeCidade}</td>
                         <td align="center"><a href=
 "${pageContext.request.contextPath}/EnderecoExcluir?idEndereco=${endereco.idEndereco}">
