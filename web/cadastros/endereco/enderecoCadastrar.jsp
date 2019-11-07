@@ -24,7 +24,9 @@
             </tr>
             <tr>
                 <td>CEP: </td>
-                <td><input type="text" name="CEP" id="CEP" value="${endereco.CEP}" maxlength="50" /></td>
+                <td><input type="text" name="CEP" id="CEP" 
+                           value="${endereco.CEP}" size="50" 
+                           maxlength="50" /></td>
             </tr>
             <tr>
                 <td>Nome da rua: </td>

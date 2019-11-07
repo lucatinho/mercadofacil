@@ -34,9 +34,9 @@ public class EnderecoCadastrar extends HttpServlet {
         
         response.setContentType("text/html;charset=iso-8859-1");
         int idendereco = Integer.parseInt(request.getParameter("idendereco"));
-        double CEP = Double.parseDouble(request.getParameter("CEP"));
+        String CEP = request.getParameter("CEP");
         String rua = request.getParameter("rua");
-        int numeroCasa = Integer.parseInt(request.getParameter("numerocasa"));
+        int numeroCasa = Integer.parseInt(request.getParameter("numeroCasa"));
         int idCidade = Integer.parseInt(request.getParameter("idcidade"));
         String mensagem = null;
         
