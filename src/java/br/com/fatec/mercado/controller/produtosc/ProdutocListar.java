@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.fatec.mercado.controller.pedido;
+package br.com.fatec.mercado.controller.produtosc;
 
 
 import br.com.fatec.mercado_lib.dao.GenericDAO;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jeffersonpasserini
  */
-@WebServlet(name = "PedidoListar", urlPatterns = {"/PedidoListar"})
-public class PedidoListar extends HttpServlet {
+@WebServlet(name = "ProdutocListar", urlPatterns = {"/ProdutocListar"})
+public class ProdutocListar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,7 +38,7 @@ public class PedidoListar extends HttpServlet {
         try{
             GenericDAO dao = new ProdutoDAO();
             request.setAttribute("produtos", dao.listar());
-            request.getRequestDispatcher("/cliente/pedido/pedido.jsp")
+            request.getRequestDispatcher("/cliente/produto/produto.jsp")
                     .forward(request, response);
             
         } catch (Exception ex){

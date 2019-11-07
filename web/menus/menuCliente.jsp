@@ -5,7 +5,7 @@
     </center>
     <div class="list-group">
 
-        <a href="${pageContext.request.contextPath}/PedidoListar" class="list-group-item list-group-item-action">Lista de produtos</a>
+        <a href="${pageContext.request.contextPath}/ProdutocListar" class="list-group-item list-group-item-action">Lista de produtos</a>
 
     </div>
 </div>
