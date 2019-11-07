@@ -7,7 +7,7 @@ package br.com.fatec.mercado.controller.pedido;
 
 
 import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.dao.PedidoDAO;
+import br.com.fatec.mercado_lib.dao.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,14 +36,14 @@ public class PedidoListar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
         try{
-            GenericDAO dao = new PedidoDAO();
-            request.setAttribute("pedidos", dao.listar());
-            request.getRequestDispatcher("/cadastros/pedido/pedido.jsp")
+            GenericDAO dao = new ProdutoDAO();
+            request.setAttribute("produtos", dao.listar());
+            request.getRequestDispatcher("/cliente/pedido/pedido.jsp")
                     .forward(request, response);
             
         } catch (Exception ex){
             System.out.println("Problemas no Servlet ao Listar"
-                    + " Pedidos! Erro: " + ex.getMessage());
+                    + " Produtos! Erro: " + ex.getMessage());
         }
     }
 

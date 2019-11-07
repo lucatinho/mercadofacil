@@ -1,6 +1,8 @@
+<jsp:include page="/header.jsp"/>
+
 <div class="container">
     <center>
-        <h2>Página Principal sem logar</h2>
+        <h2>Página Principal ADM</h2>
     </center>
     <div class="list-group">
         
@@ -16,3 +18,5 @@
         
     </div>
 </div>
+        
+<%@ include file="/footer.jsp" %>  
