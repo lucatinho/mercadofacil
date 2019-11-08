@@ -49,7 +49,7 @@ public class MercadoCadastrar extends HttpServlet {
         String nome = request.getParameter("nomepessoa");
         String cpfCnpj = request.getParameter("cpfcnpjpessoa");
         Date dataNascimento = Conversao.converterData(request.getParameter("datanascimento"));
-        int idCidade = Integer.parseInt(request.getParameter("idCidade"));
+        int idCidade = Integer.parseInt(request.getParameter("idcidade"));
         String observacao = request.getParameter("observacao");
         String url = request.getParameter("url");
         
