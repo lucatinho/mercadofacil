@@ -1,9 +1,3 @@
-<%-- 
-    Document   : estado
-    Created on : 02/09/2019, 08:49:15
-    Author     : jeffersonpasserini
---%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <jsp:include page="/header.jsp"/>

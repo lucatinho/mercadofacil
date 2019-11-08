@@ -15,6 +15,8 @@
         <a href="${pageContext.request.contextPath}/StatusPedidoListar" class="list-group-item list-group-item-action">Status do Pedido</a>
         <a href="${pageContext.request.contextPath}/PedidoListar" class="list-group-item list-group-item-action">Pedidos</a>
         <a href="${pageContext.request.contextPath}/ProdutoListar" class="list-group-item list-group-item-action">Produto</a>
+        <a href="${pageContext.request.contextPath}/ClienteListar" class="list-group-item list-group-item-action">Cliente</a>
+        <a href="${pageContext.request.contextPath}/MercadoListar" class="list-group-item list-group-item-action">Mercado</a>
         
     </div>
 </div>

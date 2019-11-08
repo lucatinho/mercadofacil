@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.fatec.mercado.controller.cliente;
+package br.com.fatec.mercado.controller.mercado;
 
-import br.com.fatec.mercado_lib.dao.EstadoDAO;
+
 import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.model.Cliente;
+import br.com.fatec.mercado_lib.dao.MercadoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jeffersonpasserini
  */
-@WebServlet(name = "ClienteNovo", urlPatterns = {"/ClienteNovo"})
-public class ClienteNovo extends HttpServlet {
+@WebServlet(name = "MercadoListar", urlPatterns = {"/MercadoListar"})
+public class MercadoListar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,23 +35,15 @@ public class ClienteNovo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
-        String mensagem = null;
         try{
-            //cria cidade vazia
-            Cliente oCliente = Cliente.clienteVazio();
-            //Gera lista de estado
-            GenericDAO oEstadoDAO = new EstadoDAO();
-            request.setAttribute("estados", oEstadoDAO.listar());
-            //cria variavel no servidor para armazenar cliente
-            request.setAttribute("cliente", oCliente);
-            
-            //dispacha objeto de lombada para a pagina jsp
-            request.getRequestDispatcher("/cadastros/cliente/clienteCadastrar.jsp")
+            GenericDAO dao = new MercadoDAO();
+            request.setAttribute("mercadoes", dao.listar());
+            request.getRequestDispatcher("/cadastros/mercado/mercado.jsp")
                     .forward(request, response);
-        }
-        catch(Exception ex){
-            System.out.println("Problemas no Servlet ao Novo Cliente! "
-                    + "Erro: " + ex.getMessage());
+            
+        } catch (Exception ex){
+            System.out.println("Problemas no Servlet ao Listar"
+                    + " Mercadoes! Erro: " + ex.getMessage());
         }
     }
 

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.fatec.mercado.controller.cliente;
+package br.com.fatec.mercado.controller.pessoa;
 
-import br.com.fatec.mercado_lib.dao.EstadoDAO;
-import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.model.Cliente;
+
+import br.com.fatec.mercado_lib.dao.PessoaDAO;
+import br.com.fatec.mercado_lib.model.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,13 +15,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  *
  * @author jeffersonpasserini
  */
-@WebServlet(name = "ClienteNovo", urlPatterns = {"/ClienteNovo"})
-public class ClienteNovo extends HttpServlet {
+@WebServlet(name = "PessoaBuscarCpfCnpj", urlPatterns = {"/PessoaBuscarCpfCnpj"})
+public class PessoaBuscarCpfCnpj extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,24 +37,25 @@ public class ClienteNovo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
-        String mensagem = null;
         try{
-            //cria cidade vazia
-            Cliente oCliente = Cliente.clienteVazio();
-            //Gera lista de estado
-            GenericDAO oEstadoDAO = new EstadoDAO();
-            request.setAttribute("estados", oEstadoDAO.listar());
-            //cria variavel no servidor para armazenar cliente
-            request.setAttribute("cliente", oCliente);
+            String cpfCnpj = request.getParameter("cpfcnpjpessoa");
+
+            //limpa cpf cnpj
+            cpfCnpj = cpfCnpj.replaceAll("[./-]", "");
+
+            PessoaDAO oPessoaDAO = new PessoaDAO();
+            Pessoa oPessoa = oPessoaDAO.carregarCpf(cpfCnpj);
             
-            //dispacha objeto de lombada para a pagina jsp
-            request.getRequestDispatcher("/cadastros/cliente/clienteCadastrar.jsp")
-                    .forward(request, response);
-        }
-        catch(Exception ex){
-            System.out.println("Problemas no Servlet ao Novo Cliente! "
-                    + "Erro: " + ex.getMessage());
-        }
+            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+            String jsonPessoa = gson.toJson(oPessoa);
+            
+            response.setCharacterEncoding("iso-8859-1");
+            response.getWriter().write(jsonPessoa);
+ 
+        } catch (Exception ex){
+             System.out.println("Problemas ao validar cpf/cnpj"
+                     + " Erro: " + ex.getMessage());
+        }  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

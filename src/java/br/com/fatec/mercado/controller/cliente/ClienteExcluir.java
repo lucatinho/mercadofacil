@@ -5,10 +5,8 @@
  */
 package br.com.fatec.mercado.controller.cliente;
 
-
-import br.com.fatec.mercado.controller.cliente.*;
-import br.com.fatec.mercado_lib.dao.GenericDAO;
 import br.com.fatec.mercado_lib.dao.ClienteDAO;
+import br.com.fatec.mercado_lib.dao.GenericDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -41,20 +39,19 @@ public class ClienteExcluir extends HttpServlet {
         try{
             GenericDAO dao = new ClienteDAO();
             if (dao.excluir(idCliente)){
-                mensagem = "Cliente excluída com sucesso!";
+                mensagem = "Cliente invativado com sucesso!";
             } else {
-                mensagem = "Problemas ao excluir Cliente!";
+                mensagem = "Problemas ao inativar Cliente!";
             }
             
             request.setAttribute("mensagem", mensagem);
-            //request.getRequestDispatcher("UsuarioListar").forward(request, response);
+     
             response.sendRedirect("ClienteListar");
             
         } catch (Exception ex){
-            System.out.println("Problemas no Servlet ao excluir Usuário! "
+            System.out.println("Problemas no Servlet ao excluir Cliente! "
                     + "Erro: " + ex.getMessage());
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

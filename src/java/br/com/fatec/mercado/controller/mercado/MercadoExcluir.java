@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.fatec.mercado.controller.cliente;
+package br.com.fatec.mercado.controller.mercado;
 
-import br.com.fatec.mercado_lib.dao.EstadoDAO;
 import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.model.Cliente;
+import br.com.fatec.mercado_lib.dao.MercadoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jeffersonpasserini
  */
-@WebServlet(name = "ClienteNovo", urlPatterns = {"/ClienteNovo"})
-public class ClienteNovo extends HttpServlet {
+@WebServlet(name = "MercadoExcluir", urlPatterns = {"/MercadoExcluir"})
+public class MercadoExcluir extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,22 +34,22 @@ public class ClienteNovo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
+        int idMercado = Integer.parseInt(request.getParameter("idMercado"));
         String mensagem = null;
         try{
-            //cria cidade vazia
-            Cliente oCliente = Cliente.clienteVazio();
-            //Gera lista de estado
-            GenericDAO oEstadoDAO = new EstadoDAO();
-            request.setAttribute("estados", oEstadoDAO.listar());
-            //cria variavel no servidor para armazenar cliente
-            request.setAttribute("cliente", oCliente);
+            GenericDAO dao = new MercadoDAO();
+            if (dao.excluir(idMercado)){
+                mensagem = "Mercado invativado com sucesso!";
+            } else {
+                mensagem = "Problemas ao inativar Mercado!";
+            }
             
-            //dispacha objeto de lombada para a pagina jsp
-            request.getRequestDispatcher("/cadastros/cliente/clienteCadastrar.jsp")
-                    .forward(request, response);
-        }
-        catch(Exception ex){
-            System.out.println("Problemas no Servlet ao Novo Cliente! "
+            request.setAttribute("mensagem", mensagem);
+     
+            response.sendRedirect("MercadoListar");
+            
+        } catch (Exception ex){
+            System.out.println("Problemas no Servlet ao excluir Mercado! "
                     + "Erro: " + ex.getMessage());
         }
     }

@@ -5,10 +5,8 @@
  */
 package br.com.fatec.mercado.controller.cliente;
 
-
-import br.com.fatec.mercado.controller.cliente.*;
-import br.com.fatec.mercado_lib.dao.GenericDAO;
 import br.com.fatec.mercado_lib.dao.ClienteDAO;
+import br.com.fatec.mercado_lib.dao.GenericDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

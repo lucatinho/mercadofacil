@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.fatec.mercado.controller.cliente;
+package br.com.fatec.mercado.controller.mercado;
 
 import br.com.fatec.mercado_lib.dao.EstadoDAO;
 import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.model.Cliente;
+import br.com.fatec.mercado_lib.model.Mercado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jeffersonpasserini
  */
-@WebServlet(name = "ClienteNovo", urlPatterns = {"/ClienteNovo"})
-public class ClienteNovo extends HttpServlet {
+@WebServlet(name = "MercadoNovo", urlPatterns = {"/MercadoNovo"})
+public class MercadoNovo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,21 +38,26 @@ public class ClienteNovo extends HttpServlet {
         String mensagem = null;
         try{
             //cria cidade vazia
-            Cliente oCliente = Cliente.clienteVazio();
+            Mercado oMercado = Mercado.mercadoVazio();
             //Gera lista de estado
             GenericDAO oEstadoDAO = new EstadoDAO();
             request.setAttribute("estados", oEstadoDAO.listar());
-            //cria variavel no servidor para armazenar cliente
-            request.setAttribute("cliente", oCliente);
+            //cria variavel no servidor para armazenar mercado
+            request.setAttribute("mercado", oMercado);
             
             //dispacha objeto de lombada para a pagina jsp
-            request.getRequestDispatcher("/cadastros/cliente/clienteCadastrar.jsp")
+            request.getRequestDispatcher("/cadastros/mercado/mercadoCadastrar.jsp")
                     .forward(request, response);
         }
         catch(Exception ex){
-            System.out.println("Problemas no Servlet ao Novo Cliente! "
+            System.out.println("Problemas no Servlet ao Novo Mercado! "
                     + "Erro: " + ex.getMessage());
         }
+
+
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

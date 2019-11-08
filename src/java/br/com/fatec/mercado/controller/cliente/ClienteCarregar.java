@@ -5,13 +5,15 @@
  */
 package br.com.fatec.mercado.controller.cliente;
 
-
-import br.com.fatec.mercado.controller.cliente.*;
-import br.com.fatec.mercado_lib.dao.GenericDAO;
-import br.com.fatec.mercado_lib.dao.MarcaDAO;
+import br.com.fatec.mercado_lib.dao.CidadeDAO;
 import br.com.fatec.mercado_lib.dao.ClienteDAO;
+import br.com.fatec.mercado_lib.dao.EstadoDAO;
+import br.com.fatec.mercado_lib.dao.GenericDAO;
+import br.com.fatec.mercado_lib.model.Cidade;
+import br.com.fatec.mercado_lib.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,22 +42,28 @@ public class ClienteCarregar extends HttpServlet {
         int idCliente = Integer.parseInt(request.getParameter("idCliente"));
         String mensagem = null;
         try{
-            //Gera lista de marca
-            GenericDAO oMarcaDAO = new MarcaDAO();
-            request.setAttribute("marcas", oMarcaDAO.listar());
-            //cria variavel no servidor para armazenar objeto de lombada
+            //carrega dados cliente
             GenericDAO oClienteDAO = new ClienteDAO();
-            request.setAttribute("cliente", oClienteDAO.carregar(idCliente));
+            Cliente oCliente = (Cliente) oClienteDAO.carregar(idCliente);
+            request.setAttribute("cliente", oCliente );
+            
+            //Gera lista de estado
+            GenericDAO oEstadoDAO = new EstadoDAO();
+            request.setAttribute("estados", oEstadoDAO.listar());
+            
+            //Gera lista de cidade
+            CidadeDAO oCidadeDAO = new CidadeDAO();
+            List<Cidade> lstCidades = oCidadeDAO.listar(oCliente.getCidade().getEstado().getIdEstado());
+            request.setAttribute("cidades", lstCidades );
             
             //dispacha objeto de lombada para a pagina jsp
             request.getRequestDispatcher("/cadastros/cliente/clienteCadastrar.jsp")
                     .forward(request, response);
         }
         catch(Exception ex){
-            System.out.println("Problemas no Servlet ao Nova Cliente! "
+            System.out.println("Problemas no Servlet ao Novo cliente! "
                     + "Erro: " + ex.getMessage());
         }
-
 
     }
 

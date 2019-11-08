@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.fatec.mercado.controller.cliente;
+package br.com.fatec.mercado.controller.mercado;
+
 
 import br.com.fatec.mercado_lib.dao.CidadeDAO;
-import br.com.fatec.mercado_lib.dao.ClienteDAO;
 import br.com.fatec.mercado_lib.dao.GenericDAO;
+import br.com.fatec.mercado_lib.dao.MercadoDAO;
 import br.com.fatec.mercado_lib.model.Cidade;
-import br.com.fatec.mercado_lib.model.Cliente;
+import br.com.fatec.mercado_lib.model.Mercado;
 import br.com.fatec.mercado_lib.utils.Conversao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jeffersonpasserini
  */
-@WebServlet(name = "ClienteCadastrar", urlPatterns = {"/ClienteCadastrar"})
-public class ClienteCadastrar extends HttpServlet {
+@WebServlet(name = "MercadoCadastrar", urlPatterns = {"/MercadoCadastrar"})
+public class MercadoCadastrar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,12 +44,14 @@ public class ClienteCadastrar extends HttpServlet {
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=iso-8859-1");
         //pega dados do formulario
-        int idCliente = Integer.parseInt(request.getParameter("idcliente"));
+        int idMercado = Integer.parseInt(request.getParameter("idmercado"));
         int idPessoa = Integer.parseInt(request.getParameter("idpessoa"));
         String nome = request.getParameter("nomepessoa");
         String cpfCnpj = request.getParameter("cpfcnpjpessoa");
         Date dataNascimento = Conversao.converterData(request.getParameter("datanascimento"));
-        int idCidade = Integer.parseInt(request.getParameter("idcidade"));
+        int idCidade = Integer.parseInt(request.getParameter("idCidade"));
+        String observacao = request.getParameter("observacao");
+        String url = request.getParameter("url");
         
         //limpa cpf cnpj
         cpfCnpj = cpfCnpj.replaceAll("[./-]", "");
@@ -59,8 +62,10 @@ public class ClienteCadastrar extends HttpServlet {
             //busca objeto de cidade
             GenericDAO oCidadeDAO = new CidadeDAO();
             Cidade oCidade = (Cidade) oCidadeDAO.carregar(idCidade);
-            //gera objeto de cliente
-            Cliente oCliente = new Cliente(idCliente,
+            //gera objeto de mercado
+            Mercado oMercado = new Mercado(idMercado,
+                                       url,
+                                       observacao,
                                        "",
                                        idPessoa,
                                        cpfCnpj,
@@ -68,17 +73,17 @@ public class ClienteCadastrar extends HttpServlet {
                                        dataNascimento,
                                        oCidade);
 
-            GenericDAO dao = new ClienteDAO();
-            if (dao.cadastrar(oCliente)){
-                mensagem = "Cliente cadastrada com sucesso!";                
+            GenericDAO dao = new MercadoDAO();
+            if (dao.cadastrar(oMercado)){
+                mensagem = "Mercado cadastrada com sucesso!";                
             } else {
-                mensagem = "Problemas ao cadastrar Cliente. "
+                mensagem = "Problemas ao cadastrar Mercado. "
                     + "Verifique os dados informados "
                         + "e tente novamente!";
             }
 
             request.setAttribute("mensagem", mensagem);
-            response.sendRedirect("ClienteListar");
+            response.sendRedirect("MercadoListar");
 
         } catch (Exception ex){
              System.out.println("Problemas no Servlet ao cadastrar"
@@ -102,7 +107,7 @@ public class ClienteCadastrar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ClienteCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MercadoCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -120,7 +125,7 @@ public class ClienteCadastrar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ClienteCadastrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MercadoCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
