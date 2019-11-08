@@ -13,13 +13,13 @@
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/">Módulo de Cadastro</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/">Pagina inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/MarcaListar">Marca</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/menus/menuADM.jsp">ADM</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/menus/menuCliente.jsp">Usuario</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
