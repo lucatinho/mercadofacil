@@ -10,16 +10,14 @@
     <br>
     <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>ID</th>                    
+            <tr>             
                 <th>Produto</th>
                 <th>Preco</th>
             </tr>
         </thead>                                 
         <tbody id="myTable">
             <c:forEach var="produto" items="${produtos}">
-                <tr>
-                    <td align="center">${produto.idProduto}</td>                    
+                <tr>                  
                     <td align="center">${produto.nomeProduto}</td>
                     <td align="center">${produto.preco}</td>
                 </tr>                
