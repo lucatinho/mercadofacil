@@ -3,39 +3,19 @@
 <jsp:include page="/header.jsp"/>
 
 
-<div class="container mt-3">
-    <h2>Produtos</h2>
-    <p>Tabela com os produtos a seguir:</p>  
-    <input class="form-control" id="myInput" type="text" placeholder="Procurar..">
-    <br>
-    <table class="table table-bordered">
-        <thead>
-            <tr>             
-                <th>Produto</th>
-                <th>Preco</th>
-            </tr>
-        </thead>                                 
-        <tbody id="myTable">
-            <c:forEach var="produto" items="${produtos}">
-                <tr>                  
-                    <td align="center">${produto.nomeProduto}</td>
-                    <td align="center">${produto.preco}</td>
-                </tr>                
-            </c:forEach>
-        </tbody>
-    </table>
-</div>
+<c:forEach var="produto" items="${produtos}">
+    <ul class="list-unstyled">
+        <li class="media">
+            <img class="mr-3" src="../tcc_v2/img/ps4.png" alt="Imagem de exemplo genérica">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1"><td align="center">${produto.nomeProduto}</td></h5>
+                <button type="button" class="btn btn-primary">ImgCarrinho</button>
+            </div>
+        </li>
+    </ul>  
+    <hr>
 
-<script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
+</c:forEach>
 
 <div align="center">
     <a href="index.jsp" type="button" class="btn btn-primary">Voltar à Página Inicial</a>
