@@ -6,9 +6,11 @@
 package br.com.fatec.mercado.controller.produto;
 
 
+import br.com.fatec.mercado_lib.dao.CategoriaDAO;
 import br.com.fatec.mercado_lib.dao.GenericDAO;
 import br.com.fatec.mercado_lib.dao.MarcaDAO;
 import br.com.fatec.mercado_lib.dao.ProdutoDAO;
+import br.com.fatec.mercado_lib.model.Categoria;
 import br.com.fatec.mercado_lib.model.Marca;
 import br.com.fatec.mercado_lib.model.Produto;
 import java.io.IOException;
@@ -41,6 +43,7 @@ public class ProdutoCadastrar extends HttpServlet {
         response.setContentType("text/html;charset=iso-8859-1");
         int idproduto = Integer.parseInt(request.getParameter("idproduto"));
         int idMarca = Integer.parseInt(request.getParameter("idmarca"));
+        int idCategoria = Integer.parseInt(request.getParameter("idcategoria"));
         String nomeProduto = request.getParameter("nomeproduto");
         double preco = Double.parseDouble(request.getParameter("preco"));
         String descricao = request.getParameter("descricao");
@@ -50,10 +53,14 @@ public class ProdutoCadastrar extends HttpServlet {
             GenericDAO oMarcaDAO = new MarcaDAO();
             Marca oMarca = (Marca) oMarcaDAO.carregar(idMarca);
             
+            CategoriaDAO oCategoriaDAO = new CategoriaDAO();
+            Categoria oCategoria = (Categoria) oCategoriaDAO.carregar(idCategoria);
+            
             Produto oProduto = new Produto();
             oProduto.setIdProduto(idproduto);
             oProduto.setNomeProduto(nomeProduto);
             oProduto.setMarca(oMarca);
+            oProduto.setCategoria(oCategoria);
             oProduto.setDescricao(descricao);
             oProduto.setPreco(preco);
                

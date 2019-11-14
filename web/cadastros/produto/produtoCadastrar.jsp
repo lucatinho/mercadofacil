@@ -46,6 +46,23 @@
                     </select>
                 </td>
             </tr>
+            
+            <tr>
+                <td>Categoria: </td>
+                <td>
+                    <select name="idcategoria" id="idcategoria">
+                        <option value="">Selecione</option>
+                        
+                        <c:forEach var="categoria" items="${categoria}">
+                            <option value="${categoria.idCategoria}" 
+                                    ${produto.categoria.idCategoria == categoria.idCategoria ? "selected" : ""}>
+                                ${categoria.nomeCategoria}
+                            </option>
+                        </c:forEach>
+                            
+                    </select>
+                </td>
+            </tr>
 
             <tr>
                 <td>Preço: </td>

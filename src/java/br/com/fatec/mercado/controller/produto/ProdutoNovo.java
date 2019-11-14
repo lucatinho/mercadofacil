@@ -6,6 +6,7 @@
 package br.com.fatec.mercado.controller.produto;
 
 
+import br.com.fatec.mercado_lib.dao.CategoriaDAO;
 import br.com.fatec.mercado_lib.dao.GenericDAO;
 import br.com.fatec.mercado_lib.dao.MarcaDAO;
 import br.com.fatec.mercado_lib.model.Produto;
@@ -45,6 +46,9 @@ public class ProdutoNovo extends HttpServlet {
             //Gera lista de marca
             GenericDAO oMarcaDAO = new MarcaDAO();
             request.setAttribute("marcas", oMarcaDAO.listar());
+            //Gera lista de categoria
+            GenericDAO oCategoriaDAO = new CategoriaDAO();
+            request.setAttribute("categoria", oCategoriaDAO.listar());
             //cria variavel no servidor para armazenar objeto de lombada
             request.setAttribute("produto", oProduto);
             
