@@ -49,40 +49,42 @@ public class ClienteCadastrar extends HttpServlet {
         String cpfCnpj = request.getParameter("cpfcnpjpessoa");
         Date dataNascimento = Conversao.converterData(request.getParameter("datanascimento"));
         int idCidade = Integer.parseInt(request.getParameter("idcidade"));
-        
+        String rua = request.getParameter("rua");
+
         //limpa cpf cnpj
         cpfCnpj = cpfCnpj.replaceAll("[./-]", "");
-            
+
         String mensagem = null;
-  
-        try{
+
+        try {
             //busca objeto de cidade
             GenericDAO oCidadeDAO = new CidadeDAO();
             Cidade oCidade = (Cidade) oCidadeDAO.carregar(idCidade);
             //gera objeto de cliente
             Cliente oCliente = new Cliente(idCliente,
-                                       "",
-                                       idPessoa,
-                                       cpfCnpj,
-                                       nome,
-                                       dataNascimento,
-                                       oCidade);
+                    rua,
+                    "",
+                    idPessoa,
+                    cpfCnpj,
+                    nome,
+                    dataNascimento,
+                    oCidade);
 
             GenericDAO dao = new ClienteDAO();
-            if (dao.cadastrar(oCliente)){
-                mensagem = "Cliente cadastrada com sucesso!";                
+            if (dao.cadastrar(oCliente)) {
+                mensagem = "Cliente cadastrada com sucesso!";
             } else {
                 mensagem = "Problemas ao cadastrar Cliente. "
-                    + "Verifique os dados informados "
+                        + "Verifique os dados informados "
                         + "e tente novamente!";
             }
 
             request.setAttribute("mensagem", mensagem);
             response.sendRedirect("ClienteListar");
 
-        } catch (Exception ex){
-             System.out.println("Problemas no Servlet ao cadastrar"
-                     + " Usuário! Erro: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Problemas no Servlet ao cadastrar"
+                    + " Usuário! Erro: " + ex.getMessage());
         }
 
     }

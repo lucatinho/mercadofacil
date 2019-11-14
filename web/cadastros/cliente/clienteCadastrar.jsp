@@ -51,6 +51,12 @@
                          value="${cliente.dataNascimento}" /></td>
                     </tr>
                     <tr>
+                        <td>Rua: </td>
+                        <td><input type="textarea" name="rua" id="rua" 
+                         value="${cliente.rua}" size="100" 
+                         maxlength="50" /></td>
+                    </tr>
+                    <tr>
                         <td>Estado: </td>
                         <td>
                             <select name="idestado" id="idestado" onchange="BuscarCidadesPorEstado()" >

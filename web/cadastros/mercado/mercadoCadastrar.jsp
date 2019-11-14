@@ -50,7 +50,7 @@
                          value="${mercado.dataNascimento}" /></td>
                     </tr>
                     <tr>
-                        <td>url: </td>
+                        <td>Rua: </td>
                         <td><input type="text" name="url" id="url" 
                          value="${mercado.url}" size="100"/></td>
                     </tr>
