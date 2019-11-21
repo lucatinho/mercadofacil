@@ -62,13 +62,13 @@
                                     <td>R$${produto.preco}</td>
                                     <td>
                                         <div class="form-group--number">
-                                            <button class="minus"><span>-</span></button>
-                                            <input class="form-control" type="text" value="2">
-                                            <button class="plus"><span>+</span></button>
+                                            <button class="minus"  onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><span>-</span></button>
+                                            <input class="form-control" min="0" name="quantity" value="1" type="number">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><span>+</span></button>
                                         </div>
                                     </td>
                                     <td>$300</td>
-                                    
+
                                 </tr>
                             </tbody>
                         </c:forEach>
