@@ -21,9 +21,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/menus/menuCliente.jsp">Usuario</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
         </ul>
     </nav>
 </head>

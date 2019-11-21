@@ -3,7 +3,7 @@
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <!------ Include the above in your HEAD tag ---------->
 
@@ -52,26 +52,33 @@
 </nav>
 
 
-<div class="card-deck">
+<div class="album py-5 bg-light">
+    <div class="container">
 
-    <c:forEach var="mercado" items="${mercadoes}">
+        <div class="row">
+            <c:forEach var="mercado" items="${mercadoes}">
+                <div class="col-sm-4">
 
+                    <div class="card mb-4 box-shadow">
 
-        <div class="card">
-            <img class="card-img-top" src="../tcc_v2/img/128x128.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">${mercado.nome}</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
+                        <img class="card-img-left" src="../tcc_v2/img/128x128.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${mercado.nome}</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <center>
+                                   <a class="btn btn-primary" href="${pageContext.request.contextPath}/ProdutocListar" role="button">Entrar</a>
+                                </center>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </c:forEach> 
         </div>
-               
-    </c:forEach> 
- </div>
+    </div>
+</div>
 
-<div align="center">        
-    <a href="${pageContext.request.contextPath}/MercadoNovo">Novo Mercado</a>
-    <a href="index.jsp">Voltar à Página Inicial</a>
-</div>        
+
 
 <%@ include file="/footer.jsp" %>        

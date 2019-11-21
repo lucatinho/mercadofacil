@@ -94,7 +94,7 @@
 
 
 <div align="center">
-    <a href="usuarios.jsp" type="button" class="btn btn-primary">Voltar à Página Inicial</a>   
+    <a href="${pageContext.request.contextPath}/menus/menuCliente.jsp" type="button" class="btn btn-primary">Voltar à Página Inicial</a>   
 </div>     
 
 <%@ include file="/footer.jsp" %>  

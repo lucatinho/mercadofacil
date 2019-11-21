@@ -1,6 +1,6 @@
 <div class="container">
     <center>
-        <h2>Página Principal sem logar</h2>
+        <h2>Menu de caminho</h2>
     </center>
     <div class="list-group">
         
